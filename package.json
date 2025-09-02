@@ -1,0 +1,18 @@
+{
+  "name": "@gamely/prometheus-cli",
+  "version": "0.0.1",
+  "description": "Lua Obfuscator written in pure Lua (distributed as npm node-js)",
+  "scripts": {
+    "prebuild2": "node scripts/copy.js && npx gly-cli bundler build/cli.lua && node scripts/deflate.js",
+    "build": "npx bun build --entrypoint src/cli.ts --target node --format cjs --outfile dist/cli.js --minify"
+  },
+  "devDependencies": {
+    "@gamely/gly-cli": "^0.2.5",
+    "@types/node": "*",
+    "bun": "*",
+    "fengari": "github:fengari-lua/fengari#6a8908380a9b5fc3a8f0fe1e9c1b79ce5dba9312"
+  },
+  "dependencies": {
+    "fengari-interop": "^0.1.3"
+  }
+}
