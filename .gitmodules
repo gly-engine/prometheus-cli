@@ -1,3 +1,6 @@
 [submodule "vendor/prometheus"]
 	path = vendor/prometheus
 	url = https://github.com/prometheus-lua/Prometheus
+[submodule "vendor/vendor/gly-engine"]
+	path = vendor/gly-engine
+	url = https://github.com/gly-engine/gly-engine

@@ -1,5 +1,7 @@
 .DS_Store
 Thumbs.db
+bin
 dist
+build
 node_modules
 package-lock.json
