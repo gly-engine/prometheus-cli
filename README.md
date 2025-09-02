@@ -1,6 +1,8 @@
 # Prometheus CLI
 
-This project is a distribution of the [prometheus-lua](https://github.com/LPGhatguy/prometheus) project, packaged for **Node.js** and available on **npm**.
+[![npm](https://img.shields.io/npm/dy/@gamely/prometheus-cli?logo=npm&logoColor=fff&label=npm%20downloads)](https://www.npmjs.com/package/@gamely/prometheus-cli)
+
+This project is a distribution of the [prometheus-lua](https://github.com/prometheus-lua/Prometheus) project, packaged for **Node.js** and available on **npm**.
 
 ## Installation
 

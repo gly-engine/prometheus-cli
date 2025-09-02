@@ -1,6 +1,6 @@
 {
   "name": "@gamely/prometheus-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lua Obfuscator written in pure Lua (distributed as npm node-js)",
   "license": "AGPL-3.0-only",
   "homepage": "https://levno-710.gitbook.io/prometheus/",
@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "node scripts/copy.js && npx gly-cli bundler build/cli.lua && node scripts/bootstrap.js && node scripts/deflate.js",
     "build": "npx bun build --entrypoint src/cli.ts --target node --format cjs --outfile dist/cli.js --minify",
-    "postbuild": "rm -Rf bin && mkdir -p bin && echo '#!/usr/bin/env node' > dist/header.txt && cat dist/header.txt dist/cli.js > bin/cli.js"
+    "postbuild": "rm -Rf bin && mkdir -p bin && echo '#!/usr/bin/env node' > dist/header.txt && cat dist/header.txt dist/cli.js > bin/cli.js && chmod +x bin/cli.js"
   },
   "bin": {
     "prometheus-cli": "bin/cli.js"
