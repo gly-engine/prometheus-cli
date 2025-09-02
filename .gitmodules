@@ -1,0 +1,3 @@
+[submodule "vendor/prometheus"]
+	path = vendor/prometheus
+	url = https://github.com/prometheus-lua/Prometheus
