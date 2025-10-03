@@ -15,7 +15,7 @@
     "prometheus-cli": "bin/cli.js"
   },
   "devDependencies": {
-    "@gamely/gly-cli": "^0.2.5",
+    "@gamely/gly-cli": "0.1.8",
     "@types/node": "*",
     "bun": "*",
     "fengari": "github:fengari-lua/fengari#6a8908380a9b5fc3a8f0fe1e9c1b79ce5dba9312"
