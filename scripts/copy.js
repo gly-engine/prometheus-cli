@@ -6,11 +6,6 @@ const destinationDir = path.join(__dirname, '..', 'build');
 
 const replacements = [
   {
-    files: ['prometheus/randomStrings.lua'],
-    from: /local\s*Ast,\s*utils\s*=\s*require\("prometheus\.ast"\),\s*require\("prometheus\.util"\);/,
-    to: 'local Ast = require("prometheus.ast")\nlocal utils = require("prometheus.util")'
-  },
-  {
     files: ['prometheus/bit.lua'],
     from: /require/g,
     to: 'non_require'
