@@ -3,5 +3,6 @@ dist/
 scripts/
 src/
 vendor/
+.github/
 .gitmodules
 .gitattributes
