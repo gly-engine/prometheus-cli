@@ -4,6 +4,3 @@
 [submodule "vendor/vendor/gly-engine"]
 	path = vendor/gly-engine
 	url = https://github.com/gly-engine/gly-engine
-[submodule "vendor/demoon"]
-	path = vendor/demoon
-	url = https://github.com/ceifa/demoon.git
