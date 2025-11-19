@@ -1,19 +1,34 @@
-import { lauxlib, lualib } from "fengari";
-
+// nodejs
+import path from "path";
 import * as zlib from "zlib";
-import * as glue from "../vendor/gly-engine/npm/gly-cli/src/glue";
-
+// node_modules
+import { Lua } from 'wasmoon-lua5.1'
+// vendorize
 import cli from "../dist/cli.txt" assert { type: "text" };
 
-function main() {
-  const L = lauxlib.luaL_newstate();
-  const script = zlib.inflateRawSync(Buffer.from(cli, 'base64')) as unknown as string
-  lualib.luaL_openlibs(L);
-  glue.overridePrint(L);
-  glue.setLuaArgs(L, process.argv.slice(2));
-  glue.registerJsRequire(L);
-  glue.createBufferTable(L);
-  glue.doScript(L, script);
+async function main() {
+  const lua = await Lua.create();
+  const script = zlib.inflateRawSync(Buffer.from(cli, 'base64')).toString();
+  
+  lua.global.set('arg', process.argv.slice(1))
+  // https://github.com/ceifa/demoon/blob/4d854848d9aedaedead4cef5e8e714320e72cd4c/src/index.js#L26
+  lua.global.set('jsRequire', (modulename, metaDirectory) => {
+    if (metaDirectory) {
+      if (modulename.startsWith('.')) {
+        modulename = path.resolve(metaDirectory, '..', modulename)
+      }
+      modulename = require.resolve(modulename)
+    }
+
+    return module.require(modulename)
+  })
+  try {
+    lua.doStringSync(script);
+  }
+  catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
 }
 
 main();

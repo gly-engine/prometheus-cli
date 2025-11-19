@@ -1,4 +1,4 @@
-if not io.lines then
+if not io.lines or jsRequire then
     io.lines = function(filename)
         local file = io.open(filename, "r")
         if not file then return function() return nil end end
