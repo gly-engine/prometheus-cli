@@ -17,5 +17,5 @@ npm install -g @gamely/prometheus-cli
 After installation, you can run the CLI using the following command:
 
 ```bash
-prometheus-cli source.lua --preset Minify
+npx prometheus-cli source.lua --preset Minify
 ```

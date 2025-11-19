@@ -7,9 +7,11 @@ import { Lua } from 'wasmoon-lua5.1'
 import cli from "../dist/cli.txt" assert { type: "text" };
 
 async function main() {
-  const lua = await Lua.create();
   const script = zlib.inflateRawSync(Buffer.from(cli, 'base64')).toString();
-  
+  const lua = await Lua.create({
+    customWasmUri: path.join(__dirname, '..', 'lib', 'liblua5.1.wasm')
+  });
+
   lua.global.set('arg', process.argv.slice(1))
   // https://github.com/ceifa/demoon/blob/4d854848d9aedaedead4cef5e8e714320e72cd4c/src/index.js#L26
   lua.global.set('jsRequire', (modulename, metaDirectory) => {
