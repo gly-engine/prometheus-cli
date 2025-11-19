@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from 'fs'
 
 function bootstrap() {
   const fmock = fs.readFileSync("vendor/gly-engine/tests/mock/io.lua", "utf8");
