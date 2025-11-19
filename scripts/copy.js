@@ -16,6 +16,13 @@ const replacements = [
   }
 ];
 
+function processWebAssembly() {
+  const wasmFile = path.join('node_modules', 'wasmoon-lua5.1', 'dist', 'liblua5.1.wasm')
+  const libDir = path.join(__dirname, '..', 'lib');
+  fs.mkdirSync(libDir, { recursive: true });
+  fs.copyFileSync(wasmFile, `${libDir}/liblua5.1.wasm`)
+}
+
 function processDirectory(source, destination) {
   fs.mkdirSync(destination, { recursive: true });
 
@@ -44,3 +51,4 @@ function processDirectory(source, destination) {
 }
 
 processDirectory(sourceDir, destinationDir);
+processWebAssembly();

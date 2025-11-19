@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
 bin
+lib
 dist
 build
 node_modules
