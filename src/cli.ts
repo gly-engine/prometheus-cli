@@ -1,6 +1,7 @@
 // nodejs
 import path from "path";
 import * as zlib from "zlib";
+import { fileURLToPath } from 'url';
 // node_modules
 import { Lua } from 'wasmoon-lua5.1'
 // vendorize
@@ -8,8 +9,9 @@ import cli from "../dist/cli.txt" assert { type: "text" };
 
 async function main() {
   const script = zlib.inflateRawSync(Buffer.from(cli, 'base64')).toString();
+  const url = fileURLToPath(import.meta.url) 
   const lua = await Lua.create({
-    customWasmUri: path.join(__dirname, '..', 'lib', 'liblua5.1.wasm')
+    customWasmUri: path.join(path.dirname(url), '..', 'lib', 'liblua5.1.wasm')
   });
 
   lua.global.set('arg', process.argv.slice(1))
