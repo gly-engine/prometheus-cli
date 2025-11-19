@@ -10,7 +10,7 @@ import cli from "../dist/cli.txt" assert { type: "text" };
 async function main() {
   const script = zlib.inflateRawSync(Buffer.from(cli, 'base64')).toString();
   const lua = await Lua.create({
-    customWasmUri: (new URL('../lib/liblua5.1.wasm', import.meta.url)).toString()
+    customWasmUri: path.join(fileURLToPath(import.meta.url), '..', '..', 'lib', 'liblua5.1.wasm')
   });
 
   lua.global.set('arg', process.argv.slice(1))
